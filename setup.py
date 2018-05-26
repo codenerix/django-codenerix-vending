@@ -43,5 +43,8 @@ setup(
     install_requires=[
         'django-codenerix',
         'django-codenerix-extensions',
+        'django-codenerix-invoicing',
+        'django-codenerix-products',
+        'django-codenerix-pos',
     ]
 )
