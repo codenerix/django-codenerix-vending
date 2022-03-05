@@ -2,10 +2,10 @@
 django-codenerix-vending
 ========================
 
-Codenerix Vending is a module that enables `CODENERIX <http://www.codenerix.com/>`_ to work as a Point Of Sales system focused for business faced to final client (services, supermarkets & shops, examples: retaurants, petrol stations, clothes shops, grocery store, hardware store and others).
+Codenerix Vending is a module that enables `CODENERIX <https://www.codenerix.com/>`_ to work as a Point Of Sales system focused for business faced to final client (services, supermarkets & shops, examples: retaurants, petrol stations, clothes shops, grocery store, hardware store and others).
 
-.. image:: http://www.codenerix.com/wp-content/uploads/2018/05/codenerix.png
-    :target: http://www.codenerix.com
+.. image:: https://github.com/codenerix/django-codenerix/raw/master/codenerix/static/codenerix/img/codenerix.png
+    :target: https://www.codenerix.com
     :alt: Try our demo with Codenerix Cloud
 
 ****
@@ -41,7 +41,7 @@ Quickstart
 Documentation
 *************
 
-Coming soon... do you help us? `Codenerix <http://www.codenerix.com/>`_
+Coming soon... do you help us? `Codenerix <https://www.codenerix.com/>`_
 
 You can chat with us `here <https://goo.gl/NgpzBh>`_.
 
