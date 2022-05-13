@@ -23,7 +23,7 @@ import datetime
 
 from django.db.models import F, Q
 from django.shortcuts import render
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 from django.conf import settings
 
 from codenerix.middleware import get_current_user
