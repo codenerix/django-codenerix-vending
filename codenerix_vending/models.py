@@ -2,7 +2,7 @@
 #
 # django-codenerix-vending
 #
-# Copyright 2017 Centrologic Computational Logistic Center S.L.
+# Codenerix GNU
 #
 # Project URL : http://www.codenerix.com
 #
@@ -23,11 +23,11 @@ import uuid
 import hashlib
 import random
 import string
-from channels import Channel, Group
+# from channels import Channel, Group
 
 from django.db import models
-from django.utils.encoding import smart_text
-from django.utils.translation import ugettext_lazy as _
+from django.utils.encoding import smart_str
+from django.utils.translation import gettext_lazy as _
 from django.db.models import Q
 from django.conf import settings
 

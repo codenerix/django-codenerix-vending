@@ -2,7 +2,7 @@
 #
 # django-codenerix-vending
 #
-# Copyright 2018 Centrologic Computational Logistic Center S.L.
+# Codenerix GNU
 #
 # Project URL : http://www.codenerix.com
 #
@@ -23,7 +23,7 @@ import datetime
 
 from django.db.models import F, Q
 from django.shortcuts import render
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 from django.conf import settings
 
 from codenerix.middleware import get_current_user
