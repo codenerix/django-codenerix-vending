@@ -38,19 +38,24 @@ from .forms import BudgetForRegiterUserForm, BudgetForEmployeesUserForm
 
 
 class VendingInit(View):
-    template_name = 'vendings/init.html'
+    template_name = "codenerix_vending/init.html"
 
     @method_decorator(login_required)
     def get(self, request, *args, **kwargs):
         context = {}
 
-        uuid = self.request.session.get('POS_client_UUID', None)
-        opened = CashDiary.objects.filter(pos__uuid=uuid, closed_user__isnull=True).first()
+        uuid = self.request.session.get("POS_client_UUID", None)
+        opened = CashDiary.objects.filter(
+            pos__uuid=uuid, closed_user__isnull=True
+        ).first()
 
         if opened is None:
-            context['error'] = _("No CashDiary is open!")
-        context['ws_entry_point'] = 'vendings'
-        context['url_budget'] = reverse('CDNX_invoicing_salesbaskets_shoppingcart_vending_list', kwargs={'bpk': 'CNDX_VENDING_LINES'})
+            context["error"] = _("No CashDiary is open!")
+        context["ws_entry_point"] = "codenerix_vending"
+        context["url_budget"] = reverse(
+            "CDNX_invoicing_salesbaskets_shoppingcart_vending_list",
+            kwargs={"bpk": "CNDX_VENDING_LINES"},
+        )
 
         return render(request, self.template_name, context)
 
@@ -63,7 +68,7 @@ class VendingCreateBudgerForRegisterUser(GenCreateModal, GenCreate):
         bs = BillingSeries.objects.filter(default=True).first()
         if bs is None:
             errors = form._errors.setdefault("customer", ErrorList())
-            errors.append(_('Billing Series by default not exists'))
+            errors.append(_("Billing Series by default not exists"))
             return self.form_invalid(form)
         else:
             self.request.billing_series = bs
@@ -74,8 +79,8 @@ class VendingCreateBudgerForRegisterUser(GenCreateModal, GenCreate):
 
             self.request.signed = True
             form.instance.signed = True
-            
-            uuid = self.request.session.get('POS_client_UUID', None)
+
+            uuid = self.request.session.get("POS_client_UUID", None)
             pos = POS.objects.filter(uuid=uuid).first()
 
             self.request.pos = pos
@@ -95,21 +100,21 @@ class VendingCreateBudgerForDefaultUser(View):
         bs = BillingSeries.objects.filter(default=True).first()
         customer_default = Customer.objects.filter(default_customer=True).first()
         if bs is None:
-            answer['error'] = _('Billing Series by default not exists')
+            answer["error"] = _("Billing Series by default not exists")
         elif customer_default is None:
-            answer['error'] = _('Customer by default not exists')
+            answer["error"] = _("Customer by default not exists")
         else:
             budget = SalesBasket()
             budget.billing_series = bs
             budget.name = "{}".format(datetime.datetime.now())
             budget.signed = True
             budget.customer = customer_default
-            uuid = self.request.session.get('POS_client_UUID', None)
+            uuid = self.request.session.get("POS_client_UUID", None)
             pos = POS.objects.filter(uuid=uuid).first()
 
             budget.pos = pos
 
             budget.save()
-            answer['__pk__'] = budget.pk
+            answer["__pk__"] = budget.pk
 
         return JsonResponse(answer)
